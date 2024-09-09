@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="controls">
+      <label for="author-select">Author</label>
+      <select id="author-select">
+        <option value="author1">Alejandro Escamilla</option>
+        <option value="author2">John Doe</option>
+        <option value="author3">Jane Smith</option>
+      </select>
+    </div>
+    
+    <div id="grid"></div>  
+  </div>
+
+  <script src="js/script.js"></script>
+  <script> createCards(10); </script>
+
+</body>
+</html>
