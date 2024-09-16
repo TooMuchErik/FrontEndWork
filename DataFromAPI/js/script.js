@@ -1,28 +1,40 @@
-function createCards(n) {
+function createCards(imageData) {
     const buttonContainer = document.getElementById('grid');
-    buttonContainer.innerHTML = ''; // Clear existing cards if any
+    buttonContainer.innerHTML = '';
 
-    for (let i = 0; i < n; i++) { // Changed to go from 0 to n-1
+    imageData.forEach((image) => {
         const card = document.createElement('div');
         card.className = 'card';
 
-        const imageP = document.createElement('div');
-        imageP.className = 'image-placeholder'; // Fixed typo
+        const img = document.createElement('img');
+        img.src = image.download_url;
+        img.alt = image.author;
+        img.className = 'image';
 
         const h = document.createElement('h3');
-        h.textContent = 'Title ' + (i + 1); // Unique title for each card
+        h.textContent = image.author;
 
         const p = document.createElement('p');
-        p.textContent = 'Description for card ' + (i + 1); // Unique description
+        p.textContent = 'Photo by ' + image.author;
 
-        // Append elements to the card
-        card.appendChild(imageP);
+        card.appendChild(img);
         card.appendChild(h);
         card.appendChild(p);
 
-        // Append the card to the container
         buttonContainer.appendChild(card);
+    });
+}
+
+async function fetchImageData() {
+    try {
+        const response = await fetch('https://picsum.photos/v2/list');
+        const imageData = await response.json();
+        createCards(imageData);
+    } catch (error) {
+        console.error('Error fetching image data:', error);
     }
 }
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    fetchImageData();
+});
