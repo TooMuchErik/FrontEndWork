@@ -25,4 +25,8 @@ export class AppComponent {
     this.selectedUserId = id;
   }
 
+  onSelectAdd(idAdd: string){
+    console.log("pressed!" + idAdd);
+  }
+
 }

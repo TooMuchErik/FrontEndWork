@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 
 @Component({
@@ -11,6 +11,11 @@ import { TaskComponent } from "./task/task.component";
 export class TasksComponent {
   @Input({ required: true }) userId! : string;
   @Input({required: true}) name!: string;
+  @Output() select = new EventEmitter<string>();
+
+  onSelectAdd(){
+    this.select.emit("button");
+  }
 
   tasks = [
     {
