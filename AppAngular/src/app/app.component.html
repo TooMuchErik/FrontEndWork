@@ -8,7 +8,7 @@
         }
     </ul>
     @if(selectedUser){
-        <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" (select)="onSelectAdd($event)" />
+        <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" (addTask)="onSelectAdd($event)" />
     } @else {
         <p id="fallback"> Select a User</p>
     }
